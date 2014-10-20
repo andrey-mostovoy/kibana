@@ -4,16 +4,58 @@ We enjoy working with contributors to get their code accepted. There are many ap
 
 The process for contributing to any of the Elasticsearch repositories is similar.
 
-1. Sign the contributor license agreement  
+### Sign the contributor license agreement
+
 Please make sure you have signed the [Contributor License Agreement](http://www.elasticsearch.org/contributor-agreement/). We are not asking you to assign copyright to us, but to give us the right to distribute your code without restriction. We ask this of all contributors in order to assure our users of the origin and continuing existence of the code. You only need to sign the CLA once.
 
-2. Run the grunt build process and ensure it completes without errors with your changes.
+### Run the tests and build process
 
-3. Rebase your changes
-Update your local repository with the most recent code from the main Kibana repository, and rebase your branch on top of the latest master branch. We prefer your changes to be squashed into a single commit.
+To ensure that your changes will not break other functionality, please run the test suite and build process before submitting your pull request.
 
-4. Submit a pull request
+Before running the tests you will need to install the projects dependencies as described below.
+
+Once that is complete just run:
+
+```sh
+grunt test build
+```
+
+#### Development Environment Setup
+
+- install node.js (we recommend using [nvm](https://github.com/creationix/nvm))
+
+  ```sh
+  ## follow directions at https://github.com/creationix/nvm, then
+  nvm install 0.10
+  ```
+
+- install ruby (we recommend using [rvm](http://rvm.io/rvm/install), which also installs the `bundler` gem that is required later)
+
+  ```sh
+  ## follow directions at http://rvm.io/rvm/install, then
+  rvm install 1.9
+  ```
+
+- install grunt and bower globally
+
+  ```sh
+  npm install -g grunt-cli bower
+  ```
+
+- install node, bower, and ruby dependencies
+
+  ```sh
+  npm install && bower install && cd src/server && bundle && cd ../..
+  ```
+
+- start the development server 
+
+  ```sh
+  grunt dev
+  ```
+
+### Submit a pull request
+
 Push your local changes to your forked copy of the repository and submit a pull request. In the pull request, describe what your changes do and mention the number of the issue where discussion has taken place, eg “Closes #123″.
 
 Then sit back and wait. There will probably be discussion about the pull request and, if any changes are needed, we would love to work with you to get your pull request merged into Kibana.
-
